@@ -1,6 +1,11 @@
+import { useRef } from "react"
 import Card from "./Card"
 
+
 const Forground = () => {
+
+
+    const ref = useRef(null)
 
     const data = [
         {
@@ -24,9 +29,9 @@ const Forground = () => {
     ]
 
   return (
-    <div className="fixed z-[3] w-full h-full flex gap-5 flex-wrap p-5">
+    <div ref={ref} className="fixed z-[3] w-full h-full flex gap-5 flex-wrap p-5">
         {data.map((item, index) => (
-            <Card key={index} item={item} />
+            <Card key={index} item={item} referance={ref}/>
         ))}
     </div>
   )
