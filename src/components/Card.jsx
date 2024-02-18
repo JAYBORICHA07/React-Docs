@@ -8,12 +8,12 @@ import { Badge } from 'flowbite-react';
 
 const Card = ({ item, referance,  deletePost }) => {
 
-    const bgColor = `bg-${item.tag.tagColor}-600`
+    const bgColor = `bg-${item.tagColor}-600`
 
     return (
         <motion.div drag dragConstraints={referance} whileDrag={{scale : 1.2}} dragElastic={0.1} className="relative w-60 h-72 flex-shrink-0 rounded-[45px] bg-zinc-900/90 text-white px-5 py-8 overflow-hidden">
             <div className="flex items-center justify-between">
-                <Badge color="gray" className="flex justify-center items-center w-min">Work</Badge>
+                <Badge color="gray" className="flex justify-center items-center w-min">{item.bedge}</Badge>
                 <span className="w-7 h-7 bg-gray-700 rounded-full flex items-center justify-center" onClick={()=>(deletePost(item.id))}>
                     <IoClose size='0.8em' color="#fff"/>
                 </span>
@@ -23,12 +23,9 @@ const Card = ({ item, referance,  deletePost }) => {
                 <div className="flex items-center py-3 justify-between px-8  mb-3">
                     <h5>{item.fileSize}</h5>
                 </div>
-                {
-                    item.tag.isOpen &&
                     <div className={`tag w-full py-4 ${bgColor} flex items-center justify-center`}>
-                        <h3 className="text-sm font-semibold flex items-center justify-center">{item.tag.tagTitle}</h3>
+                        <h3 className="text-sm font-semibold flex items-center justify-center">{item.tagTitle}</h3>
                     </div>
-                }
 
             </div>
         </motion.div>
