@@ -63,7 +63,7 @@ const Forground = () => {
     return (
         <div ref={ref} className="fixed z-[3] w-full h-full flex gap-5 flex-wrap p-5 overflow-scroll " >
             <Dilouge addData={addData}/>
-            <div className="flex items-center flex-col md:flex-row gap-5 justify-center">
+            <div className="flex items-center flex-wrap flex-col md:flex-row gap-5 justify-center">
                 {data.map((item, index) => (
                     <Card key={index} item={item} referance={ref} addData={addData} deletePost={handleDelete} />
                 ))}
