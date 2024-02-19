@@ -60,12 +60,25 @@ const Forground = () => {
         setData(data.filter((item) => (item.id !== id)))
     }
 
+
+    const updateData = (item) => {
+            const index = data.findIndex(obj => obj.id === item?.id); // Find the index of the object
+          
+            if (index !== -1) { // If the object is found
+              const updatedData = [...data]; // Create a copy of the array
+              updatedData[index] = { ...updatedData[index], ...item }; // Update the object at the index
+              setData(updatedData); 
+            } else {
+              console.warn(`Item with ID ${id} not found!`); 
+            }
+    }
+
     return (
         <div ref={ref} className="fixed z-[3] w-full h-full flex gap-5 flex-wrap p-5 overflow-scroll " >
             <Dilouge addData={addData}/>
             <div className="flex items-center flex-wrap flex-col md:flex-row gap-5 justify-center">
                 {data.map((item, index) => (
-                    <Card key={index} item={item} referance={ref} addData={addData} deletePost={handleDelete} />
+                    <Card key={index} item={item} referance={ref} addData={addData} deletePost={handleDelete} updateData={updateData} />
                 ))}
             </div>
         </div>
